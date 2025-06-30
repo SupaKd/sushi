@@ -1,0 +1,101 @@
+.login,
+.register {
+  @include flex-column;
+  min-height: 100vh;
+  padding: 1rem;
+  background-color: $primary-color;
+
+  &-form {
+    padding: 2rem;
+    border-radius: $radius-lg;
+    width: 100%;
+    max-width: 500px;
+  }
+
+  &-title {
+    text-align: center;
+    margin-bottom: 1.5rem;
+    color: $secondary-color;
+  }
+
+  &-group {
+    margin-bottom: 1rem;
+    display: flex;
+    flex-direction: column;
+
+    label {
+      margin-bottom: 0.5rem;
+      font-weight: bold;
+      color: $secondary-color;
+    }
+
+    input {
+      padding: 2rem;
+      border-radius: $radius-sm;
+      border: none;
+      transition: border-color 0.2s;
+
+      &:focus {
+        outline: none;
+        border-color: $button;
+      }
+    }
+  }
+
+  &-button {
+    width: 100%;
+    margin-top: 4rem;
+    padding: 2rem;
+    background-color: $button;
+    color: $text;
+    border: none;
+    border-radius: 0.5rem;
+    font-size: 1.1rem;
+    cursor: pointer;
+    transition: background-color 0.2s;
+
+    &:hover {
+      background-color: $hover;
+    }
+  }
+  .login-register {
+    margin-top: 1rem;
+    text-align: center;
+    font-size: 0.95rem;
+    color: $secondary-color;
+
+    a {
+      color: $button;
+      text-decoration: none;
+
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+  }
+
+  img {
+    display: none;
+  }
+
+  @media screen and (min-width: 768px) {
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 4rem;
+
+    .login-form {
+      flex: 1;
+      max-width: 400px;
+    }
+
+    img {
+      display: flex;
+      flex: 1;
+      max-width: 600px;
+      border-radius: $radius-lg;
+      height: auto;
+      margin-top: 0;
+    }
+  }
+}
