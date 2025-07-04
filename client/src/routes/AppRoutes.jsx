@@ -1,10 +1,10 @@
 import { Route, Routes } from "react-router-dom";
 import Home from "../pages/home/Home";
-import Story from "../pages/Story";
+import Story from "../pages/others/Story";
 import Cart from "../pages/user/Cart";
 import Login from "../pages/auth/Login";
 import Register from "../pages/auth/Register";
-import Dashboard from "../pages/user/Dashboard";
+import Dashboard from "../pages/user/dashboard/Dashboard";
 
 function AppRoutes() {
   return (
