@@ -57,7 +57,7 @@ function Orders() {
   if (error) return <p className="error">{error}</p>;
 
   return (
-    <section className="orders">
+    <main className="orders">
       <h2>Historique des commandes</h2>
       {orders.length > 0 ? (
         <table>
@@ -67,7 +67,6 @@ function Orders() {
               <th>Date</th>
               <th>Total</th>
               <th>Statut</th>
-              <th>Détails</th>
             </tr>
           </thead>
           <tbody>
@@ -77,9 +76,7 @@ function Orders() {
                 <td>{new Date(order.created_at).toLocaleDateString()}</td>
                 <td>{order.total_price} €</td>
                 <td>{order.status}</td>
-                <td>
-                  <button onClick={() => handleGetDetail(order.id)}>Voir</button>
-                </td>
+                
               </tr>
             ))}
           </tbody>
@@ -94,7 +91,7 @@ function Orders() {
           onClose={() => setShowModal(false)}
         />
       )}
-    </section>
+    </main>
   );
 }
 

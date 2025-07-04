@@ -20,22 +20,25 @@ function Dashboard() {
   }
 
   return (
-    <main>
+    <main className="dashboard">
+      <section>
+
       <h1>Bienvenue, {infos.alias} 👋</h1>
       <p>Email : {infos.email}</p>
       <p>Téléphone : {infos.phone}</p>
 
-      <button onClick={() => setShowModal(true)}>Modifier mes infos</button>
+      <button className="show" onClick={() => setShowModal(true)}>Modifier mes infos</button>
       <button onClick={handleLogout} className="btn-logout">
         Se déconnecter
       </button>
 
       {showModal && (
         <UpdateUserModal
-          userInfos={infos}
-          onClose={() => setShowModal(false)}
+        userInfos={infos}
+        onClose={() => setShowModal(false)}
         />
       )}
+      </section>
     </main>
   );
 }

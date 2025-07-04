@@ -1,0 +1,110 @@
+.categorie {
+  padding: 1rem;
+  margin: 2rem;
+  border-radius: $radius-md;
+  text-align: center;
+  background-color: $bg-color;
+
+  h2 {
+    margin-bottom: 1.5rem;
+    color: $secondary-color;
+  }
+
+  .categorie-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.5rem;
+
+    button {
+      background-color: transparent;
+      border: 2px solid $secondary-color;
+      color: $secondary-color;
+      padding: 1rem 1.5rem;
+      border-radius: $radius-sm;
+      cursor: pointer;
+      font-size: 1rem;
+      transition: all 0.3s ease;
+
+      &:hover {
+        background-color: $hover;
+      }
+
+      &.active {
+        background-color: $primary-color;
+      }
+    }
+  }
+}
+
+// ==============================
+// Product
+// ==============================
+
+.product {
+  display: grid;
+  gap: 2rem;
+  padding: 2rem 1rem;
+  grid-template-columns: 1fr;
+
+  @media (min-width: 768px) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @media (min-width: 1024px) {
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  .product-card {
+    background-color: #fff;
+    border-radius: $radius-lg;
+    @include flex-column;
+    padding: 1rem;
+    text-align: center;
+    gap:0.5rem;
+
+    .product-image {
+      width: 100%;
+      max-height: 200px;
+      object-fit: cover;
+      border-radius: $radius-md;
+    }
+
+    .no-image {
+      width: 100%;
+      height: 200px;
+    }
+
+    .product-name {
+      font-size: $font-size-lg;
+      color: $primary-color;
+    }
+
+    .product-description {
+      font-size: $font-size-md;
+      color: $secondary-color;
+    }
+
+    .product-price {
+      font-size: $font-size-md;
+      font-weight: bold;
+      color: $secondary-color;
+    }
+  }
+}
+
+.add {
+  background-color: $primary-color;
+  color: $text;
+  border: none;
+  padding: 1rem 1.5rem;
+  border-radius: $radius-pill;
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+
+  &:hover {
+    background-color: $hover;
+  }
+}

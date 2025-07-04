@@ -25,7 +25,7 @@ function Cart() {
   return (
     <main className="cart">
       {cart.length ? (
-        <>
+        
           <section>
             <button className="remove" onClick={handleClearCart}>
               <FontAwesomeIcon icon={faXmark} />
@@ -55,9 +55,9 @@ function Cart() {
 
             <p>Montant de la commande : {totalItems}€</p>
           </section>
-        </>
+        
       ) : (
-        <p>Votre panier est vide</p>
+        <p>Votre panier est vide...</p>
       )}
     </main>
   );

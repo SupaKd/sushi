@@ -1,10 +1,131 @@
 .cart {
-
-        section {
-            width: 100%;
-            background-color: red;
-            margin:1rem;
-            padding:5rem;
+    padding: 10rem 1.5rem;
+    background-color: #fff;
+  
+    section {
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+      position: relative;
+    }
+  
+    .remove {
+      background: none;
+      border: none;
+      color: $secondary-color;
+      font-size: $font-size-lg;
+      align-self: flex-end;
+      transition: color 0.3s ease;
+  
+      &:hover {
+        color: $danger-color;
+      }
+    }
+  
+    article {
+      border: 1px solid $bg-color;
+      border-radius: $radius-md;
+      padding: 4rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+  
+      h3 {
+        font-size: $font-size-lg;
+        color: $primary-color;
+      }
+  
+      div {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+        flex-wrap: wrap;
+  
+        button {
+          background-color: transparent;
+          border: 1px solid $secondary-color;
+          color: $secondary-color;
+          font-size: $font-size-md;
+          padding: 0.5rem 1rem;
+          border-radius: $radius-sm;
+          cursor: pointer;
+          transition: all 0.3s ease;
+  
+          &:hover {
+            background-color: $secondary-color;
+            color: $text;
+          }
         }
-    
-}
+  
+        span {
+          font-size: $font-size-md;
+          font-weight: bold;
+          min-width: 1rem;
+          text-align: center;
+        }
+      }
+  
+      p:last-of-type {
+        color: $secondary-color;
+      }
+  
+      button:last-of-type {
+        background-color: $primary-color;
+        color: $text;
+        border: none;
+        padding: 0.6rem 1.2rem;
+        border-radius: $radius-pill;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+  
+        &:hover {
+          background-color: darken($primary-color, 10%);
+        }
+      }
+    }
+  
+    p:last-child {
+      text-align: center;
+      font-size: $font-size-lg;
+      font-weight: bold;
+      color: $secondary-color;
+      margin-top: 1rem;
+    }
+  
+    // Responsive
+    @media (min-width: 768px) {
+        padding: 15rem 1.5rem;
+
+      article {
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+  
+        div {
+          flex: 1;
+          justify-content: flex-start;
+        }
+  
+        h3,
+        p {
+          flex: 1;
+        }
+      }
+    }
+  }
+  
+  .btn-order {
+    background-color: $secondary-color;
+    color: $text;
+    border: none;
+    padding: 2rem 1.5rem;
+    border-radius: $radius-pill;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  
+    &:hover {
+      background-color: $hover;
+    }
+  }
