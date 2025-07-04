@@ -1,6 +1,5 @@
-// src/layout/Header.jsx
-import { useState } from "react";
-import { Link, NavLink } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { NavLink, useNavigate } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faBarsStaggered,
@@ -8,50 +7,84 @@ import {
   faBasketShopping,
 } from "@fortawesome/free-solid-svg-icons";
 
+import { toggleMenu } from "../features/menuSlice";
+import { logout } from "../features/authSlice";
+
 function Header() {
-  const [isOpen, setIsOpen] = useState(false);
-  const toggleMenu = () => setIsOpen((prev) => !prev);
-  const closeMenu = () => setIsOpen(false);
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const { isLogged } = useSelector((state) => state.auth);
+  const { isMenuOpen } = useSelector((state) => state.menu);
+  const cart = useSelector((state) => state.cart);
+  const totalItems = cart.reduce((total, item) => total + item.quantity, 0);
+
+  async function handleLogout() {
+    const res = await fetch("http://localhost:9000/api/v1/auth/logout", {
+      method: "POST",
+      credentials: "include",
+    });
+
+    if (res.ok) {
+      dispatch(logout());
+      navigate("/");
+    }
+  }
+
+  function handleClick() {
+    dispatch(toggleMenu());
+  }
 
   return (
     <header className="header">
-      <Link
-        className={`burger ${isOpen ? "rotate" : ""}`}
-        onClick={toggleMenu}
-        aria-label="Menu mobile"
-        aria-expanded={isOpen}
-      >
-        <FontAwesomeIcon icon={isOpen ? faXmark : faBarsStaggered} />
-      </Link>
-
-      <Link to="/" onClick={closeMenu} className="logo-mobile">
-        <img src="/logo/apple-touch-icon.png" alt="Logo" />
-      </Link>
-      <Link to="/" onClick={closeMenu} className="logo-desktop">
-        <img src="/logo/apple-touch-icon.png" alt="Logo" />
-      </Link>
-
-      <div className="header-right">
-        <Link to="/cart" end className="cart-link">
-        <FontAwesomeIcon icon={faBasketShopping} />
-        </Link>
-
-        <nav
-          className={`header-nav ${isOpen ? "show" : ""}`}
-          aria-label="Navigation principale"
-        >
-          <NavLink to="/login" className="btn-login" onClick={closeMenu}>
-            Connexion
-          </NavLink>
-          <NavLink to="/cart" className="btn-cart" onClick={closeMenu}>
-            Panier
-          </NavLink>
-          <NavLink to="/story" className="btn-story" onClick={closeMenu}>
-            Le restaurant
-          </NavLink>
-        </nav>
+      {/* Logo mobile */}
+      <div className="logo-mobile">
+        <NavLink to="/" end>
+          <img src="logo/apple-touch-icon.png" alt="logo mobile" />
+        </NavLink>
       </div>
 
+      {/* Logo desktop */}
+      <div className="logo-desktop">
+        <NavLink to="/" end>
+          <img src="logo/apple-touch-icon.png" alt="logo desktop" />
+        </NavLink>
+      </div>
+
+      {/* Bouton burger */}
+      <button
+        className={`burger ${isMenuOpen ? "rotate" : ""}`}
+        onClick={handleClick}
+      >
+        <FontAwesomeIcon icon={isMenuOpen ? faXmark : faBarsStaggered} />
+      </button>
+
+      {/* Navigation */}
+      <nav className={`header-nav ${isMenuOpen ? "show" : ""}`}>
+      
+        <NavLink to="/story" end onClick={handleClick}>
+          Le restaurant
+        </NavLink>
+        {!isLogged ? (
+          <NavLink to="/login" end onClick={handleClick}>
+            Connexion
+          </NavLink>
+        ) : (
+          <>
+            <NavLink to="/dashboard" end onClick={handleClick}>
+              Profil
+            </NavLink>
+            <button className="logout" onClick={handleLogout}>Déconnexion</button>
+          </>
+        )}
+      </nav>
+
+      {/* Panier */}
+      <div className="cart-link">
+        <NavLink to="/cart" end>
+          <FontAwesomeIcon icon={faBasketShopping} />
+          {totalItems ? <span>({totalItems})</span> : null}
+        </NavLink>
+      </div>
     </header>
   );
 }
