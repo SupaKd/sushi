@@ -13,7 +13,7 @@ import { logout } from "../features/authSlice";
 function Header() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const { isLogged } = useSelector((state) => state.auth);
+  const { isLogged, infos } = useSelector((state) => state.auth);
   const { isMenuOpen } = useSelector((state) => state.menu);
   const cart = useSelector((state) => state.cart);
   const totalItems = cart.reduce((total, item) => total + item.quantity, 0);
@@ -60,7 +60,6 @@ function Header() {
 
       {/* Navigation */}
       <nav className={`header-nav ${isMenuOpen ? "show" : ""}`}>
-      
         <NavLink to="/story" end onClick={handleClick}>
           Le restaurant
         </NavLink>
@@ -70,10 +69,21 @@ function Header() {
           </NavLink>
         ) : (
           <>
+            {infos.role === "admin" && (
+              <NavLink to="/admin" end onClick={handleClick}>
+                Admin
+              </NavLink>
+            )}
             <NavLink to="/dashboard" end onClick={handleClick}>
               Profil
             </NavLink>
-            <button className="logout" onClick={handleLogout}>Déconnexion</button>
+
+            <NavLink to="/orders" end onClick={handleClick}>
+              Commandes
+            </NavLink>
+            <button className="logout" onClick={handleLogout}>
+              Déconnexion
+            </button>
           </>
         )}
       </nav>

@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import OrderDetailModal from "../dashboard/OrderDetailModal";
+import OrderDetailModal from "../orders/OrderDetailModal";
 
 function Orders() {
   const [orders, setOrders] = useState(null);
@@ -58,7 +58,7 @@ function Orders() {
 
   return (
     <section className="orders">
-      <h2>Mes commandes</h2>
+      <h2>Historique des commandes</h2>
       {orders.length > 0 ? (
         <table>
           <thead>
