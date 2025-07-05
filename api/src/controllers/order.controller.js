@@ -43,24 +43,6 @@ const placeOrder = async (req, res, next) => {
 	}
 };
 
-// GET COMMAND U
-const getAllUserOrders = async (req, res, next) => {
-    const user_id = req.user.userId;
-    const isAdmin = req.user.role === 'admin'; 
-
-    try {
-        const [orders] = await Order.findAllUserOrders(user_id, isAdmin);
-
-        if (!orders) {
-            res.status(400).json({ error: "Aucunes commandes pour cet utilisateur." });
-            return;
-        }
-        res.json({ success: "Commandes récupérées", orders });
-    } catch (error) {
-        next(error);
-    }
-};
-
 // Récupérer une commande spécifique par son ID (pour un utilisateur ou pour un admin)
 const getUserOrderById = async (req, res, next) => {
     const userId = req.user.userId;
@@ -82,13 +64,31 @@ const getUserOrderById = async (req, res, next) => {
             status: orderDetails[0].status,
             products: orderDetails.map((item) => ({
                 id: item.product_id,
-                label: item.label,
+                name: item.name,
                 quantity: item.quantity,
                 unit_price: parseFloat(item.unit_price),
             })),
         };
 
         res.status(200).json({ success: "Commande récupérée", order: orderInfo });
+    } catch (error) {
+        next(error);
+    }
+};
+
+// GET COMMAND U
+const getAllUserOrders = async (req, res, next) => {
+    const user_id = req.user.userId;
+    const isAdmin = req.user.role === 'admin'; 
+
+    try {
+        const [orders] = await Order.findAllUserOrders(user_id, isAdmin);
+
+        if (!orders) {
+            res.status(400).json({ error: "Aucunes commandes pour cet utilisateur." });
+            return;
+        }
+        res.json({ success: "Commandes récupérées", orders });
     } catch (error) {
         next(error);
     }
