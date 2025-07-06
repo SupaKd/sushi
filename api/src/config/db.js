@@ -1,15 +1,15 @@
 import mysql from "mysql2/promise";
 
-// Crée un pool de connexions avec la chaîne complète depuis la variable d'environnement
-const pool = mysql.createPool(process.env.DATABASE_URL);
+const pool = mysql.createPool({
+	host: process.env.DB_HOST,
+  	port: process.env.DB_PORT, // Spécifie le port MySQL si différent (ex: MAMP, Homebrew sur Mac)
+	database: process.env.DB_NAME,
+	user: process.env.DB_USER,
+	password: process.env.DB_PASSWORD,
+});
 
 pool.getConnection()
-  .then((conn) => {
-    console.log(`Connecté à la base de données : ${conn.config.database}`);
-    conn.release(); // Relâche la connexion après test
-  })
-  .catch((err) => {
-    console.error("Erreur de connexion MySQL :", err);
-  });
+	.then((res) => console.log(`Connected to ${res.config.database} database`))
+	.catch((err) => console.log(err));
 
 export default pool;
