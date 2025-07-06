@@ -25,11 +25,6 @@ app.use(
 	})
 );
 
-app.get("/api/v1/test", (req, res) => {
-	res.json({ success: true, message: "Backend en ligne et fonctionne 👍" });
-  });
-  
-
 // Middleware pour lire les cookies et le JSON
 app.use(cookieParser());
 app.use(express.json());
