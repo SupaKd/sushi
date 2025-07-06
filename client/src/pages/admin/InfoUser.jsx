@@ -38,7 +38,7 @@ function InfoUser() {
     <main className="admin-users">
       <h1>Utilisateurs enregistrés</h1>
 
-      {message && <p style={{ color: "red" }}>{message}</p>}
+      {message && <p>{message}</p>}
 
       {users.length > 0 ? (
         <table>

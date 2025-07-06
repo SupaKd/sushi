@@ -27,7 +27,7 @@ function Dashboard() {
       <p>Email : {infos.email}</p>
       <p>Téléphone : {infos.phone}</p>
 
-      <button className="show" onClick={() => setShowModal(true)}>Modifier mes infos</button>
+      <button className="patch-user" onClick={() => setShowModal(true)}>Modifier mes infos</button>
       <button onClick={handleLogout} className="btn-logout">
         Se déconnecter
       </button>

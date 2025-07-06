@@ -1,11 +1,10 @@
 import { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import OrderDetail from "./OrderDetail";
 
 function OrderUser() {
   const [orders, setOrders] = useState(null);
   const [orderDetail, setOrderDetail] = useState(null);
 
-  // Fetch toutes les commandes
   async function fetchOrders() {
     try {
       const res = await fetch("http://localhost:9000/api/v1/admin/orders", {
@@ -25,7 +24,6 @@ function OrderUser() {
     }
   }
 
-  // Fetch les détails d'une commande
   async function handleGetDetail(orderId) {
     try {
       const res = await fetch(`http://localhost:9000/api/v1/admin/orders/${orderId}`, {
@@ -46,7 +44,6 @@ function OrderUser() {
     }
   }
 
-  // Modifier le statut d'une commande
   async function handleUpdateStatus(orderId, newStatus) {
     try {
       const res = await fetch(
@@ -80,14 +77,8 @@ function OrderUser() {
   if (!orders) return <p>Chargement des commandes...</p>;
 
   return (
-    <main className="admin-dashboard">
+    <main className="admin-orders">
       <h1>Dashboard Admin</h1>
-
-      <section className="checkuser">
-        <Link to={"checkuser"} className="cta">
-          Consulter les utilisateurs
-        </Link>
-      </section>
 
       <section className="command-user">
         <h3>Commandes reçues</h3>
@@ -139,41 +130,10 @@ function OrderUser() {
       </section>
 
       {orderDetail && (
-        <section className="order-detail">
-          <h3>Détails de la commande #{orderDetail.id}</h3>
-          <p>Date : {new Date(orderDetail.created_at).toLocaleString()}</p>
-          <p>Statut : {orderDetail.status}</p>
-          <p>Total : {orderDetail.total_price} €</p>
-
-          <h4>Produits commandés :</h4>
-          <table>
-            <thead>
-              <tr>
-                <th>ID Produit</th>
-                <th>Nom</th>
-                <th>Quantité</th>
-                <th>Prix Unitaire</th>
-              </tr>
-            </thead>
-            <tbody>
-              {orderDetail.products.map((product) => (
-                <tr key={product.id}>
-                  <td>{product.id}</td>
-                  <td>{product.label || product.name}</td>
-                  <td>{product.quantity}</td>
-                  <td>{product.unit_price} €</td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
-
-          <button onClick={() => setOrderDetail(null)}>Fermer les détails</button>
-        </section>
+        <OrderDetail order={orderDetail} onClose={() => setOrderDetail(null)} />
       )}
     </main>
   );
 }
 
 export default OrderUser;
-
-// Separer le ficher car trop long

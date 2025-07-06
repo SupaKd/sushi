@@ -1,3 +1,173 @@
-.admin-dashboard {
-    padding: 10rem;
+.admin-users {
+  padding: 1rem;
+
+  h1 {
+    margin-bottom: 1.5rem;
+    text-align: center;
+  }
+
+  p {
+    text-align: center;
+    color: red;
+    margin-bottom: 1rem;
+  }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: $font-size-md;
+    box-shadow: 0 0 8px rgba(0, 0, 0, 0.05);
+  }
+
+  thead {
+    background-color: $secondary-color;
+
+    th {
+      text-align: left;
+      padding: 0.75rem 1rem;
+      font-weight: bold;
+      color: $text;
+    }
+  }
+
+  tr {
+    td {
+      padding: 0.75rem 1rem;
+      border-bottom: 1px solid #eee;
+      color: $secondary-color;
+    }
+  }
+
+  @media (min-width: 768px) {
+    padding: 2rem;
+    max-width: 1000px;
+    margin: 0 auto;
+  }
+}
+
+// ==============================
+// ORDERS
+// ==============================
+  
+.admin-orders {
+  margin-top: 10rem;
+
+  h1 {
+    text-align: center;
+    margin-bottom: 2rem;
+  }
+
+  .command-user {
+    background-color: #fff;
+    padding: 1.5rem;
+    margin: 1rem;
+    border-radius: $radius-lg;
+    box-shadow: 0 0 8px rgba(0, 0, 0, 0.05);
+
+    h3 {
+      margin-bottom: 1rem;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 1rem;
+      font-size: $font-size-md;
+
+      th,
+      td {
+        border: 1px solid #ddd;
+        padding: 0.75rem;
+        text-align: center;
+      }
+
+      th {
+        background-color: $bg-color;
+        font-weight: bold;
+      }
+
+      tr:hover {
+        background-color: $bg-color;
+      }
+
+      select {
+        padding: 0.5rem;
+        border-radius: $radius-lg;
+        border: 1px solid #ccc;
+        font-size: $font-size-sm;
+      }
+
+      button {
+        padding: 0.4rem 0.8rem;
+        background-color: $hover;
+        border: none;
+        border-radius: $radius-lg;
+        font-size: $font-size-sm;
+      }
+    }
+  }
+}
+
+// ==============================
+// ORDERS MODAL
+// ==============================
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.6); // arrière-plan semi-transparent
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.modal-content {
+  background-color: #fff;
+  padding: 2rem;
+  border-radius: 12px;
+  width: 80%;
+  max-width: 800px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+  position: relative;
+  overflow-y: auto;
+  max-height: 90vh;
+
+  h3, h4 {
+    margin-top: 0;
+  }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 1rem;
+
+    th,
+    td {
+      border: 1px solid #ddd;
+      padding: 0.5rem;
+      text-align: left;
+    }
+
+    th {
+      background-color: #f3f3f3;
+    }
+  }
+}
+
+.close-button {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  border: none;
+  background: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+  color: #888;
+
+  &:hover {
+    color: #000;
+  }
 }
