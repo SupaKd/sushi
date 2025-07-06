@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useDispatch } from "react-redux";
-import { login } from "../../../features/authslice";
+import { login } from "../../../features/authSlice";
 import { useNavigate } from "react-router-dom";
 
 function UpdateUserModal({ userInfos, onClose }) {
