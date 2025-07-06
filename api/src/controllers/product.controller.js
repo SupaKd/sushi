@@ -46,26 +46,13 @@ const getAll = async (req, res, next) => {
 	try {
 		const response = await Product.findAll();
 		if (response.length) {
-			return res.status(200).json({
-				success: true,
-				message: "Produits récupérés.",
-				datas: response,
-			});
+			return sendResponse(res, "Produits récupérés.", 200, response);
 		}
-		return res.status(404).json({
-			success: false,
-			message: "Aucun produit trouvé.",
-			datas: [],
-		});
+		return sendResponse(res, "Aucun produit trouvé.", 400);
 	} catch (error) {
-		console.error("Erreur dans getAll :", error); // pour logs Railway
-		return res.status(500).json({
-			success: false,
-			message: "Erreur serveur. Veuillez réessayer.",
-		});
+		next(error);
 	}
 };
-
 
 const getOne = async (req, res, next) => {
 	try {
