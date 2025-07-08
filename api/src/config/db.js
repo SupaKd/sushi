@@ -1,17 +1,15 @@
-import pkg from "pg";
-const { Pool } = pkg;
+import mysql from "mysql2/promise";
 
-const pool = new Pool({
-  host: process.env.DB_HOST,
-  port: Number(process.env.DB_PORT), // converti en nombre
-  database: process.env.DB_NAME,
-  user: process.env.DB_USER,
-  password: process.env.DB_PASSWORD,
-  ssl: { rejectUnauthorized: false }, // obligatoire pour Supabase
+const pool = mysql.createPool({
+	host: process.env.DB_HOST,
+  	port: process.env.DB_PORT, // Spécifie le port MySQL si différent (ex: MAMP, Homebrew sur Mac)
+	database: process.env.DB_NAME,
+	user: process.env.DB_USER,
+	password: process.env.DB_PASSWORD,
 });
 
-pool.connect()
-  .then(() => console.log(`Connected to ${process.env.DB_NAME} database`))
-  .catch((err) => console.error("Database connection error:", err));
+pool.getConnection()
+	.then((res) => console.log(`Connected to ${res.config.database} database`))
+	.catch((err) => console.log(err));
 
 export default pool;

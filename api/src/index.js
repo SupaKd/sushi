@@ -25,16 +25,6 @@ app.use(
 	})
 );
 
-app.get("/api/v1/test-db", async (req, res) => {
-	try {
-	  const result = await pool.query("SELECT NOW()");
-	  res.json({ serverTime: result.rows[0].now });
-	} catch (error) {
-	  res.status(500).json({ error: error.message });
-	}
-  });
-  
-
 // Middleware pour lire les cookies et le JSON
 app.use(cookieParser());
 app.use(express.json());
