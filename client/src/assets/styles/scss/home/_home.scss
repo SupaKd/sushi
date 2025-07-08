@@ -128,11 +128,11 @@
 }
 
 .modal-content {
-  background: white;
+  background: #fff;
   padding: 3rem;
   border-radius: 1rem;
   max-width: 600px;
-  width: 90%;
+  width: 100%;
   position: relative;
   text-align: center;
 }
@@ -145,9 +145,9 @@
 
 .modal-close {
   position: absolute;
-  top: 1rem;
+  top: 0.5rem;
   right: 1rem;
   background: transparent;
   border: none;
-  font-size: 2rem;
+  font-size: 1.5rem;
 }

@@ -1,11 +1,9 @@
 import { useEffect, useState } from "react";
-import OrderDetailModal from "../orders/OrderDetailModal";
 
 function Orders() {
   const [orders, setOrders] = useState(null);
   const [error, setError] = useState("");
-  const [selectedOrder, setSelectedOrder] = useState(null);
-  const [showModal, setShowModal] = useState(false);
+
 
   useEffect(() => {
     async function fetchOrders() {
@@ -30,28 +28,6 @@ function Orders() {
 
     fetchOrders();
   }, []);
-
-  async function handleGetDetail(orderId) {
-    try {
-      const res = await fetch(
-        `http://localhost:9000/api/v1/order/${orderId}`,
-        {
-          headers: { "Content-Type": "application/json" },
-          credentials: "include",
-        }
-      );
-
-      if (res.ok) {
-        const data = await res.json();
-        setSelectedOrder(data.order);
-        setShowModal(true);
-      } else {
-        setError("Erreur lors du chargement des détails.");
-      }
-    } catch (err) {
-      setError("Erreur serveur.");
-    }
-  }
 
   if (orders === null) return <p>Chargement des commandes...</p>;
   if (error) return <p className="error">{error}</p>;
@@ -83,13 +59,6 @@ function Orders() {
         </table>
       ) : (
         <p>Aucune commande trouvée.</p>
-      )}
-
-      {showModal && (
-        <OrderDetailModal
-          order={selectedOrder}
-          onClose={() => setShowModal(false)}
-        />
       )}
     </main>
   );

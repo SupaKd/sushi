@@ -31,7 +31,6 @@ const cartSlice = createSlice({
                 if (existingProduct.quantity > 1) {
                     existingProduct.quantity -= 1;
                 } else {
-                    // Si la quantité est 1, on le retire complètement
                     return state.filter(item => item.id !== productId);
                 }
             }

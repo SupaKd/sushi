@@ -8,7 +8,7 @@
 
   p {
     text-align: center;
-    color: red;
+    color: $danger-color;
     margin-bottom: 1rem;
   }
 
@@ -33,7 +33,7 @@
   tr {
     td {
       padding: 0.75rem 1rem;
-      border-bottom: 1px solid #eee;
+      border-bottom: 1px solid $bg-color;
       color: $secondary-color;
     }
   }
@@ -93,7 +93,7 @@
       select {
         padding: 0.5rem;
         border-radius: $radius-lg;
-        border: 1px solid #ccc;
+        border: 1px solid $bg-color;
         font-size: $font-size-sm;
       }
 
@@ -117,10 +117,8 @@
   left: 0;
   width: 100vw;
   height: 100vh;
-  background-color: rgba(0, 0, 0, 0.6); // arrière-plan semi-transparent
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  background-color: rgba(0, 0, 0, 0.6); 
+  @include flex-center;
   z-index: 1000;
 }
 
@@ -163,7 +161,7 @@
   right: 1rem;
   border: none;
   background: none;
-  font-size: 1.5rem;
+  font-size: $font-size-md;
   cursor: pointer;
   color: #888;
 

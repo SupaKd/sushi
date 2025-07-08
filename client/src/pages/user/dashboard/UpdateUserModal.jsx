@@ -47,8 +47,8 @@ function UpdateUserModal({ userInfos, onClose }) {
           dispatch(login(user));
         }
 
-        onClose(); // Ferme la modale
-        navigate("/"); // Redirige si souhaité
+        onClose(); 
+        navigate("/"); 
       } else {
         setMessage("Échec de la mise à jour.");
       }

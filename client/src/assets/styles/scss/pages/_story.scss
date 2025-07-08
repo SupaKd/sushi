@@ -1,6 +1,6 @@
 .story {
   padding-top: 10rem;
-margin:1rem;
+  margin: 1rem;
   .story-container {
     @include flex-column;
     gap: 4rem;
@@ -39,12 +39,11 @@ margin:1rem;
 
       &.reverse {
         flex-direction: row-reverse;
-      }      
+      }
     }
   }
 
   .story-values {
-
     ul {
       list-style: none;
       padding: 0;

@@ -4,7 +4,7 @@ import ProductModal from "../../UI/ProductModal";
 
 function Product({ selectedCategory }) {
   const [products, setProducts] = useState(null);
-  const [selectedProduct, setSelectedProduct] = useState(null); // 👈 nouveau state
+  const [selectedProduct, setSelectedProduct] = useState(null); 
 
   useEffect(() => {
     async function fetchProducts() {
@@ -50,7 +50,7 @@ function Product({ selectedCategory }) {
                 src={handleImage(product)}
                 alt={product.name}
                 className="product-image"
-                onClick={() => setSelectedProduct(product)} // 👈 ouverture du modal
+                onClick={() => setSelectedProduct(product)} 
               />
             ) : (
               <div className="no-image">Aucune image</div>

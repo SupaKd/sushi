@@ -1,6 +1,5 @@
 .cart {
-    padding: 10rem 1.5rem;
-    background-color: #fff;
+    padding: 10rem 1rem;
   
     section {
       display: flex;
@@ -92,9 +91,7 @@
       margin-top: 1rem;
     }
   
-    // Responsive
     @media (min-width: 768px) {
-        padding: 15rem 1.5rem;
 
       article {
         flex-direction: row;

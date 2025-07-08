@@ -68,7 +68,7 @@
 
 .modal {
   background-color: #fff;
-  border-radius: 8px;
+  border-radius: $radius-md;
   padding: 1.5rem;
   width: 100%;
   max-width: 500px;
@@ -80,7 +80,7 @@
   }
 
   .error {
-    color: #d9534f;
+    color: $danger-color;
     margin-bottom: 1rem;
     text-align: center;
   }
@@ -103,7 +103,7 @@
         font-size: 1rem;
 
         &:focus {
-          border-color: #007bff;
+          border-color: $button;
           outline: none;
         }
       }
@@ -124,7 +124,7 @@
         transition: background 0.2s;
 
         &:first-child {
-          background-color: #28a745;
+          background-color: $valid-color;
           color: #fff;
 
           &:hover {
@@ -133,8 +133,9 @@
         }
 
         &:last-child {
-          background-color: #6c757d;
-          color: $text;
+          background-color: transparent;
+          color: $secondary-color;
+          border: solid 1px #000;
 
           &:hover {
             background-color: #5a6268;
