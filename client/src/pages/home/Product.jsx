@@ -9,7 +9,7 @@ function Product({ selectedCategory }) {
   useEffect(() => {
     async function fetchProducts() {
       try {
-        const res = await fetch("https://ksushi.onrender.com/api/v1/product");
+        const res = await fetch("http://localhost:9000/api/v1/product");
         if (res.ok) {
           const { datas } = await res.json();
           setProducts(datas);
