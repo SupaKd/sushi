@@ -21,7 +21,7 @@ function Footer() {
         <div className="footer-section">
           <h3>Suivez-nous</h3>
           <div className="footer-socials">
-            <a href="#"><FontAwesomeIcon icon={faInstagram} /></a>
+            <a href="instagram.com"><FontAwesomeIcon icon={faInstagram} /></a>
             <a href="#"><FontAwesomeIcon icon={faFacebook} /></a>
             <a href="#"><FontAwesomeIcon icon={faTiktok} /></a>
           </div>
