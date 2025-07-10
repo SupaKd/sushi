@@ -25,13 +25,8 @@ app.use(
 	})
 );
 
-app.get('/ping', async (req, res) => {
-	try {
-	  const [rows] = await pool.query('SELECT 1 + 1 AS result');
-	  res.json({ success: true, result: rows[0].result });
-	} catch (error) {
-	  res.status(500).json({ success: false, error: error.message });
-	}
+app.get("/ping", (req, res) => {
+	res.send("pong 🥢");
   });
   
 
